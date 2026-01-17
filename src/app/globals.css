@@ -1,0 +1,452 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Global Reset & Base ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: var(--font-inter);
+  overflow-x: hidden;
+  height: 100%;
+  cursor: none !important; /* Hide default cursor forcibly */
+}
+
+/* Ensure custom cursor is visible over everything */
+* {
+  cursor: none !important;
+}
+
+a, button, [role="button"], input, select, textarea, .cursor-pointer {
+  cursor: none !important;
+  outline: none !important;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Only hide cursor on non-touch devices to prevent mobile issues */
+@media (pointer: coarse) {
+  body, * {
+    cursor: auto !important;
+  }
+}
+
+*:focus, *:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Text Hover Highlight - REMOVED for individual word focusing */
+
+/* ===== Scrollbar Styling ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* ===== Selection ===== */
+::selection {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* ===== Preloader ===== */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.preloader-progress {
+  width: 200px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.preloader-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #FDB813, #4A90E2, #4166F5);
+  transition: width 0.3s ease;
+}
+
+.preloader-text {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.1em;
+}
+
+/* ===== Canvas Container ===== */
+.canvas-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.canvas-container canvas {
+  display: block;
+}
+
+/* ===== Navigation Arrows ===== */
+.nav-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 30;
+  transition: all 0.3s ease;
+}
+
+.nav-arrow:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.nav-arrow:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 4px;
+}
+
+.nav-arrow--left {
+  left: 50px;
+}
+
+.nav-arrow--right {
+  right: 50px;
+}
+
+/* ===== Navigation Dots ===== */
+.nav-dots {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 16px;
+  z-index: 30;
+}
+
+.nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-dot:hover {
+  opacity: 0.6;
+  transform: scale(1.2);
+}
+
+.nav-dot--active {
+  width: 12px;
+  height: 12px;
+  opacity: 1;
+}
+
+.nav-dot-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  margin-bottom: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.nav-dot:hover .nav-dot-tooltip {
+  opacity: 1;
+}
+
+/* ===== Planet Name Display ===== */
+.planet-name {
+  position: fixed;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-space);
+  font-size: 4rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  z-index: 25;
+  transition: opacity 0.4s ease;
+}
+
+/* ===== Text Overlays ===== */
+.text-overlay {
+  position: fixed;
+  z-index: 20;
+  max-width: 500px;
+  padding: 2rem;
+}
+
+.text-overlay--center {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.text-overlay--left {
+  left: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.text-overlay--right {
+  right: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: right;
+}
+
+.text-overlay h2 {
+  font-family: var(--font-space);
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+.text-overlay p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ===== Info Panel ===== */
+.info-panel-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 40;
+}
+
+.info-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 450px;
+  height: 100vh;
+  background: rgba(10, 10, 15, 0.7);
+  backdrop-filter: blur(20px);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: -20px 0 50px rgba(0, 0, 0, 0.5);
+  z-index: 50;
+  overflow-y: auto;
+}
+
+.info-panel-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: white;
+  transition: opacity 0.2s ease;
+}
+
+.info-panel-close:hover {
+  opacity: 0.7;
+}
+
+/* ===== Fact Card ===== */
+.fact-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.fact-card-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 4px;
+}
+
+.fact-card-value {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* ===== CTA Button ===== */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  color: #ffffff;
+  font-family: var(--font-space);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1199px) {
+  .info-panel {
+    width: 400px;
+  }
+
+  .nav-arrow--left {
+    left: 30px;
+  }
+
+  .nav-arrow--right {
+    right: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .planet-name {
+    font-size: 3rem;
+  }
+
+  .nav-arrow {
+    width: 48px;
+    height: 48px;
+  }
+
+  .nav-arrow--left {
+    left: 15px;
+  }
+
+  .nav-arrow--right {
+    right: 15px;
+  }
+
+  .info-panel {
+    width: 100%;
+    height: 80vh;
+    top: auto;
+    bottom: 0;
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px 20px 0 0;
+  }
+
+  .text-overlay {
+    max-width: 90%;
+    padding: 1rem;
+  }
+
+  .text-overlay--left,
+  .text-overlay--right {
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .text-overlay h2 {
+    font-size: 1.5rem;
+  }
+
+  .nav-dots {
+    gap: 12px;
+  }
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
