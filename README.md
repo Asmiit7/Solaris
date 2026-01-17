@@ -3,11 +3,15 @@
 Solaris is an immersive, interactive journey through our solar system. Built with modern web technologies, it features realistic planetary visualizations, smooth physics-based interactions, and a cinematic user experience.
 
 
+
 <div align="center">
-  <video src="public/videos/demo.mp4" width="100%" controls autoplay muted loop>
-    Your browser does not support the video tag.
+  <video src="https://github.com/Asmiit7/solaris/raw/main/public/videos/demo.mp4" width="100%" controls autoplay muted loop>
+    <a href="https://github.com/Asmiit7/solaris/raw/main/public/videos/demo.mp4">Watch the demo video</a>
   </video>
+  <br/>
+  <p><i>(If the video doesn't play, <a href="https://github.com/Asmiit7/solaris/raw/main/public/videos/demo.mp4">click here to watch directly</a>)</i></p>
 </div>
+
 
 
 ## ✨ Features
@@ -54,7 +58,7 @@ Solaris is an immersive, interactive journey through our solar system. Built wit
 
 ## 🎨 Credits
 
-- Planet Textures: [Solar System Scope](https://www.solarsystemscope.com/textures/)
+- Planet Textures: Google gemini (background removed from any editor of your choice)
 - Icons: [Lucide React](https://lucide.dev/)
 - Fonts: Space Grotesk & Inter (Google Fonts)
 
