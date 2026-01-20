@@ -64,4 +64,4 @@ Solaris is an immersive, interactive journey through our solar system. Built wit
 
 ---
 
-Developed with ❤️ for space enthusiasts.
+I have always been a astronomy loving person and always wanted to make something in that this is my humble attempt at it and I mean I will try to do some more projects related to astronomy if possible.
