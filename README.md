@@ -18,7 +18,7 @@ Solaris is an immersive, interactive journey through our solar system. Built wit
 
 - **Interactive 3D Planets**: High-fidelity planetary rendering with dynamic lighting and hover effects.
 - **Immersive Starfield**: CPU-optimized procedural star background with realistic Milky Way layers.
-- **Physics-Based Interactions**: Custom cursor mechanics with zero-latency input tracking.
+- **Physics-Based Interactions**: Custom cursor mechanics with Low-latency input tracking.
 - **Cinematic Audio**: Integrated ambient background music with user controls and autoplay handling.
 - **Responsive Design**: Fully responsive layout adapting to all device sizes.
 - **Performance Optimized**: Leveraging GPU acceleration and efficient rendering techniques for 60fps performance using standard web technologies.
@@ -64,4 +64,4 @@ Solaris is an immersive, interactive journey through our solar system. Built wit
 
 ---
 
-Developed with ❤️ for space enthusiasts.
+I have always been a astronomy loving person and always wanted to make something in that this is my humble attempt at it and I mean I will try to do some more projects related to astronomy if possible.
